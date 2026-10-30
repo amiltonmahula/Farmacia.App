@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Farmacia.App.Page.LoginPage"
+             Title="LoginPage">
+       
+       <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, *"
+             RowSpacing="15"
+             Margin="20,150, 20, 40"
+             >
+              
+              <Image Grid.Row="0"
+                     Source="dotnet_bot.png"
+                     Aspect="AspectFit"
+                     HeightRequest="100"
+                     WidthRequest="100"></Image>
+        
+              <Label Grid.Row="1"
+                     Text="Faça o Login aqui"
+                     FontFamily="Arial"
+                     HorizontalOptions="Center">
+              </Label>
+              
+               <VerticalStackLayout Grid.Row="2"
+                                    Padding="30">
+                      <Entry Placeholder="Email"
+                             x:Name="EntEmail"></Entry>
+                      
+                      <Entry Placeholder="Senha"
+                             IsPassword="True"
+                             x:Name="EntPassWord"></Entry>
+               </VerticalStackLayout>
+           <Button Grid.Row="3"
+                      Text="Login"
+                      FontSize="Medium"
+                      BackgroundColor="DarkGreen"
+                      x:Name="BtnLogin"></Button>
+              
+              <HorizontalStackLayout Grid.Row="4"
+                                     Spacing="2"
+                                     HorizontalOptions="Center"
+                                     VerticalOptions="End">
+                     <Label Text="Esqueceu a sua senha?"/>
+                     <Label Text="Recuperar conta"
+                            TextColor="DarkGreen">
+                            <Label.GestureRecognizers>
+                                   <TapGestureRecognizer x:Name="Tap_RecuperarSenha" Tapped="Tap_RecuperarSenha_OnTapped"/>
+                            </Label.GestureRecognizers>
+                     </Label>
+              </HorizontalStackLayout>
+    </Grid>
+</ContentPage>

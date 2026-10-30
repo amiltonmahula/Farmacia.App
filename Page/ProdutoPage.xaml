@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Farmacia.App.Page.ProdutoPage"
+             Title="Produtos">
+    
+    <VerticalStackLayout Padding="20" Spacing="15">
+        
+        <Label Text="Produtos da Farmácia"
+               FontSize="26"
+               FontAttributes="Bold"></Label>
+        
+        <SearchBar Placeholder="Pesquisar produto ou código de barra..." 
+                   Text="{Binding Pesquisa}"></SearchBar>
+        
+        <ActivityIndicator IsRunning="{Binding EstaCarregando}"
+                           IsVisible="{Binding EstaCarregando }"></ActivityIndicator>
+        
+        <CollectionView ItemsSource="{Binding Produtos}"
+                            SelectionMode="None"
+                            HeightRequest="280">
+                <CollectionView.EmptyView>
+                    <Label Text="Nenhum produto encontrado."
+                           Padding="10"></Label>
+                </CollectionView.EmptyView>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Padding="12"
+                                Margin="0,4"
+                                Stroke="#DDDDDD"
+                                StrokeShape="RoundRectangle 19"
+                                >
+                            <Grid ColumnDefinitions="*, Auto"
+                                  RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto"
+                                  ColumnSpacing="12"
+                                  RowSpacing="5">
+                                <Label Grid.Row="0"
+                                       Grid.Column="0"
+                                       Text="{Binding Nome}"
+                                       FontAttributes="Bold"
+                                       FontSize="16"></Label>
+                                <Label Grid.Row="1"
+                                       Grid.Column="0"
+                                       Text="{Binding Preco,StringFormat='Preço: {0:N2}'}"></Label>
+                                <Label Grid.Row="2"
+                                       Grid.Column="0"
+                                       Text="{Binding Quantidade,StringFormat='Stock: {0}'}"></Label>
+                                <Label Grid.Row="3"
+                                       Grid.Column="0"
+                                       Text="{Binding Descricao}"></Label>
+                                <Label Grid.Row="4"
+                                       Grid.Column="0"
+                                       Text="{Binding CodigoDeBarra}"
+                                       FontSize="13"></Label>
+                                <Label Grid.Row="5"
+                                       Grid.Column="0"
+                                       Text="{Binding DataValidade,StringFormat='Validade: {0:dd/MM/yyyy'}"></Label>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        
+        
+        <Label Text="{Binding MensagemErro}"
+               TextColor="Red"></Label>
+    </VerticalStackLayout>
+</ContentPage>

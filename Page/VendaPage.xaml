@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Farmacia.App.Page.VendaPage"
+             Title="Venda">
+ 
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="18">
+            <Label Text="Nova Venda"
+                   FontSize="29"
+                   FontAttributes="Bold"></Label>
+            
+            <Label Text="Pesquisa de medicamentos"
+                   FontSize="16"
+                   FontAttributes="Bold"></Label>
+            
+            <SearchBar Placeholder="Nome do medicamento"
+                       Text="{Binding Pesquisa}"
+                       x:Name="Pesquisa"
+                       SearchButtonPressed="Pesquisa_OnSearchButtonPressed"></SearchBar>
+            <ActivityIndicator IsRunning="{Binding EstaCarregando}"
+                               IsVisible="{Binding EstaCarregando}"></ActivityIndicator>
+            
+            <Label Text="Produtos Disponiveis"
+                   FontSize="20"
+                   FontAttributes="Bold"></Label>
+            <CollectionView ItemsSource="{Binding Produtos}"
+                            SelectionMode="None"
+                            HeightRequest="280">
+                <CollectionView.EmptyView>
+                    <Label Text="Nenhum produto encontrado."
+                           Padding="10"></Label>
+                </CollectionView.EmptyView>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Padding="12"
+                                Margin="0,4"
+                                Stroke="#DDDDDD"
+                                StrokeShape="RoundRectangle 19"
+                                >
+                            <Grid ColumnDefinitions="*, Auto"
+                                  RowDefinitions="Auto, Auto, Auto"
+                                  ColumnSpacing="12"
+                                  RowSpacing="5">
+                                <Label Grid.Row="0"
+                                       Grid.Column="0"
+                                       Text="{Binding Nome}"
+                                       FontAttributes="Bold"
+                                       FontSize="16"></Label>
+                                <Label Grid.Row="1"
+                                       Grid.Column="0"
+                                       Text="{Binding Preco,StringFormat='Preço: {0:N2}'}"></Label>
+                                <Label Grid.Row="2"
+                                       Grid.Column="0"
+                                       Text="{Binding Quantidade,StringFormat='Stock: {0}'}"></Label>
+                                
+                                <Button Grid.Row="0"
+                                        Grid.RowSpan="3"
+                                        Grid.Column="1"
+                                        Text="Adicionar"
+                                        BackgroundColor="DarkGreen"
+                                        VerticalOptions="Center"
+                                        x:Name="AdicionarProduto"
+                                        Clicked="AdicionarProduto_OnClicked"
+                                        CommandParameter="{Binding}"
+                                        ></Button>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <BoxView HeightRequest="1" Color="#DDDDDD"></BoxView>
+            <Label Text="Carrinho de Compras"
+                   FontSize="22"
+                   FontAttributes="Bold"></Label>
+            <CollectionView ItemsSource="{Binding Carrinhos}"
+                            SelectionMode="None"
+                            HeightRequest="250">
+                <CollectionView.EmptyView>
+                    <Label Text="Ainda não adicionaste produto."
+                           Padding="10"></Label>
+                </CollectionView.EmptyView>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Padding="12"
+                                Margin="0,4"
+                                Stroke="#DDDDDD"
+                                StrokeShape="RoundRectangle 10">
+                            <Grid ColumnDefinitions="*, Auto"
+                                  RowDefinitions="Auto, Auto, Auto"
+                                  ColumnSpacing="10"
+                                  RowSpacing="5">
+                                <Label Grid.Row="0"
+                                       Text="{Binding Nome}"
+                                       FontAttributes="Bold"
+                                       FontSize="16"></Label>
+                                
+                                <Label Grid.Row="1"
+                                       Text="{Binding SubTotal,StringFormat='SubTotal: {0:N2}'}"></Label>
+                                <HorizontalStackLayout Grid.Row="2"
+                                                       Spacing="12">
+                                    <Button Text="-"
+                                            WidthRequest="40"
+                                            x:Name="DiminuirQuantidade"
+                                            BackgroundColor="DarkGreen"
+                                            Clicked="DiminuirQuantidade_OnClicked"
+                                            CommandParameter="{Binding}"></Button>
+                                    
+                                    <Label Text="{Binding Quantidade}"
+                                           VerticalOptions="Center"
+                                           FontSize="18"></Label>
+                                    
+                                    <Button Text="+"
+                                            WidthRequest="40"
+                                            BackgroundColor="DarkGreen"
+                                            x:Name="AumentarQuantidade"
+                                            Clicked="AumentarQuantidade_OnClicked"
+                                            CommandParameter="{Binding}"></Button>
+
+                                </HorizontalStackLayout>
+                                <Button Grid.Column="1"
+                                        Grid.RowSpan="3"
+                                        Text="Remover"
+                                        x:Name="Remover"
+                                        Clicked="Remover_OnClicked"
+                                        BackgroundColor="#B3261E"
+                                        TextColor="White"
+                                        VerticalOptions="Center"></Button>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Label Text="{Binding Mensagem}"
+                   TextColor="#B3261E"
+                   FontSize="16"></Label>
+            <Border Padding="16"
+                    Stroke="#DDDDDD"
+                    StrokeShape="RoundRectangle 12">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Total da Venda"
+                           FontSize="16"></Label>
+                    
+                    <Label Text="{Binding Total,StringFormat='Total: {0:N2}'}"
+                           FontSize="26"
+                           FontAttributes="Bold"></Label>
+                    <Button Text="Confirmar venda"
+                            BackgroundColor="DarkGreen"
+                            FontSize="17"
+                            HeightRequest="52"
+                            x:Name="ConfirmarVenda"
+                            Clicked="ConfirmarVenda_OnClicked"></Button>
+                </VerticalStackLayout>
+            </Border>
+               </VerticalStackLayout>
+            </ScrollView>
+</ContentPage>

@@ -1,0 +1,18 @@
+﻿#Ficheiros de compilação
+bin/
+obj/
+
+#Visual Studio ou Rider
+.idea/
+.vs/
+*.user
+*.suo
+
+#pacotes gerados
+*.apk
+*.aab
+*.msix
+*.appx
+
+#logs
+*.log
