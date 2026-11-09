@@ -54,4 +54,9 @@ public partial class VendaPage : ContentPage
         if(sender is Button{CommandParameter: ItemCarrinho item})
             _viewModel.AumentarQuantidade(item);
     }
+    
+    public async Task InicializarAsync()
+    {
+        await _viewModel.CarregarProdutoAsync();
+    }
 }

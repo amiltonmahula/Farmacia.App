@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Farmacia.App.Page.AdminPage.AdminMainPage">
+    
+    <Grid ColumnDefinitions="220,*"
+          BackgroundColor="White">
+        
+        <VerticalStackLayout Grid.Column="0"
+                             BackgroundColor="#173F35"
+                             Padding="15,25"
+                             Spacing="15">
+            <Label Text="FARMÁCIA"
+                   FontSize="23"
+                   FontAttributes="Bold"
+                   TextColor="White"
+                   Margin="5,10,3,20"></Label>
+                
+            <Button Text="DashBoard"
+                    x:Name="DashBoard"
+                    Clicked="DashBoard_OnClicked"
+                    BackgroundColor="#28594B"
+                    TextColor="White"
+                    HorizontalOptions="Fill"></Button>
+                <Button Text="Relatórios"
+                    x:Name="Relatorios"
+                    Clicked="Relatorios_OnClicked"
+                    BackgroundColor="#28594B"
+                    TextColor="White"
+                    HorizontalOptions="Fill"></Button>
+            <Button Text="Histórico de venda"
+                    x:Name="Vendas"
+                    Clicked="Vendas_OnClicked"
+                    BackgroundColor="Transparent"
+                    TextColor="White"
+                    HorizontalOptions="Fill"></Button>
+            <Button Text="Produtos"
+                    x:Name="Produtos"
+                    Clicked="Produtos_OnClicked"
+                    BackgroundColor="Transparent"
+                    TextColor="White"
+                    HorizontalOptions="Fill"></Button>
+            <Button Text="Funcionários"
+                    x:Name="Funcionario"
+                    Clicked="Funcionario_OnClicked"
+                    BackgroundColor="Transparent"
+                    TextColor="White"
+                    HorizontalOptions="Fill"></Button>
+            <Button Text="✖📊"
+                  FontSize="20"
+                  BackgroundColor="Transparent"
+                  TextColor="White"
+                  HorizontalOptions="Fill"></Button>    
+        </VerticalStackLayout>
+       
+        <ContentView x:Name="ContentHost"
+                     Grid.Column="1"
+                     BackgroundColor="#F4F6F5"></ContentView>
+    </Grid>
+</ContentPage>

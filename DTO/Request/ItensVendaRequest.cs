@@ -1,5 +1,5 @@
 ﻿namespace Farmacia.App.DTO.Request;
 
-public record ItensRequest(
+public record ItensVendaRequest(
     Guid ProdutoId,
     int Quantidade);

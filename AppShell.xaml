@@ -1,24 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<Shell
+﻿<?xml version="1.0"
+encoding="UTF-8" ?>
+<Shell 
     x:Class="Farmacia.App.AppShell"
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:pages="clr-namespace:Farmacia.App.Page"
-    Shell.TabBarBackgroundColor="DarkGreen"
-    Shell.TabBarTitleColor="white"
-    Shell.TabBarUnselectedColor="FloralWhite"
-    Title="Farmacia.App"
-    >
-
-    <TabBar>
-        <Tab Title="Home">
-            <ShellContent ContentTemplate="{DataTemplate pages:HomePage}"></ShellContent>
-        </Tab>
-        <Tab Title="Venda">
-            <ShellContent ContentTemplate="{DataTemplate pages:VendasPage}"></ShellContent>
-        </Tab>
-        <Tab Title="Historico">
-            <ShellContent ContentTemplate="{DataTemplate pages:HistoricoPage}"></ShellContent>
-        </Tab>
-    </TabBar>
+xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+xmlns:pages="clr-namespace:Farmacia.App.Page"
+FlyoutBehavior="Disabled">
 </Shell>

@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Farmacia.App.Page.MainPage"
+             Shell.NavBarIsVisible="False">
+        
+        <Grid ColumnDefinitions="220,*"
+              BackgroundColor="White">
+           
+           <!-- MENU LATERAL FIXO -->
+           <VerticalStackLayout Grid.Column="0"
+                                BackgroundColor="#173F35" 
+                                Padding="15,25"
+                                Spacing="15">
+               
+               <Label Text="FARMÁCIA"
+                      FontSize="23"
+                      FontAttributes="Bold"
+                      TextColor="White"
+                      Margin="5,10,3,20"></Label>
+                   
+               <Button Text="🏞  Início"
+                       x:Name="Inicio"
+                       Clicked="Inicio_OnClicked"
+                       BackgroundColor="#28594B"
+                       TextColor="White"
+                       HorizontalOptions="Fill"></Button>
+               <Button Text="📈  Venda"
+                       x:Name="Venda"
+                       Clicked="Venda_OnClicked"
+                       BackgroundColor="Transparent"
+                       TextColor="White"
+                       HorizontalOptions="Fill"></Button>
+               <Button Text="📃  Histórico de venda"
+                       x:Name="Historico"
+                       Clicked="Historico_OnClicked"
+                       BackgroundColor="Transparent"
+                       TextColor="White"
+                       HorizontalOptions="Fill"></Button>
+               <Button Text="💊  Produtos"
+                       x:Name="Produto"
+                       Clicked="Produto_OnClicked"
+                       BackgroundColor="Transparent"
+                       TextColor="White"
+                       HorizontalOptions="Fill"></Button>
+               <Button Text="⚙  Definições"
+                           x:Name="Definicoes"
+                           BackgroundColor="Transparent"
+                           TextColor="White"
+                           HorizontalOptions="Fill"></Button>
+                   <BoxView VerticalOptions="FillAndExpand"
+                            Opacity="0">
+                   </BoxView>
+                   
+                   <Button Text="Terminar sessão"
+                           ImageSource="logout.png"
+                           HeightRequest="20"
+                           WidthRequest="20"
+                           BackgroundColor="Transparent"
+                           TextColor="Red"
+                           HorizontalOptions="Fill"
+                           x:Name="Logout"
+                           Clicked="Logout_OnClicked"></Button>
+           </VerticalStackLayout>
+           <!-- ÁREA DE CONTEÚDO -->
+           <ContentView x:Name="ContentHost"
+                        Grid.Column="1"
+                        BackgroundColor="#F4F6F5"></ContentView>
+       </Grid>
+</ContentPage>

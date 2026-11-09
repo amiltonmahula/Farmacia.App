@@ -203,7 +203,7 @@ public class VendaViewModel : BaseViewModel
             Mensagem = string.Empty;
 
             var requerido = new VendaRequest(
-                Carrinhos.Select(item => new ItensRequest(item.ProdutoId,
+                Carrinhos.Select(item => new ItensVendaRequest(item.ProdutoId,
                     item.Quantidade)).ToList()
             );
 

@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+    <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Farmacia.App.Page.DashBoardPage"
+             BackgroundColor="#F4F6F5">
+        
+        <ScrollView>
+        <VerticalStackLayout Padding="30"
+                             Spacing="20">
+            <Label Text="Painel Principal"
+                   FontSize="28"
+                   FontAttributes="Bold"
+                   TextColor="#173F35"></Label>
+            <Label Text="Bem-vindo ao sistema de gestão da farmácia"
+                   FontSize="15"
+                   TextColor="gray"></Label>
+            <Grid ColumnDefinitions="*,*"
+                  ColumnSpacing="15">
+                <Border BackgroundColor="White"
+                        Padding="20"
+                        StrokeThickness="0">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="Vendas"
+                               TextColor="Gray"></Label>
+                        <Label Text="{Binding TotalVendas}"
+                               FontSize="30"
+                               FontAttributes="Bold"
+                               TextColor="#173F35"></Label>
+                    </VerticalStackLayout>
+                </Border>
+                <Border Grid.Column="1"
+                        BackgroundColor="White"
+                        Padding="20"
+                        StrokeThickness="0">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="Produtos"
+                               TextColor="Gray"></Label>
+                        <Label Text="{Binding TotalProduto}"
+                               FontSize="30"
+                               FontAttributes="Bold"
+                               TextColor="#173F35"></Label>
+                    </VerticalStackLayout>
+                </Border>
+                <Border Grid.Row="2"
+                        BackgroundColor="White"
+                        Padding="20"
+                        StrokeThickness="0">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="Valor total das Vendas"
+                               TextColor="Gray"></Label>
+                        <Label Text="0"
+                               FontSize="30"
+                               FontAttributes="Bold"
+                               TextColor="#173F35"></Label>
+                    </VerticalStackLayout>
+                    </Border>
+            </Grid>
+            <Label Text="{Binding Mensagem}"
+            TextColor="Red"></Label>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

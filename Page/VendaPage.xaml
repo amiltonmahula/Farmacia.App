@@ -142,11 +142,11 @@
                     <Label Text="Total da Venda"
                            FontSize="16"></Label>
                     
-                    <Label Text="{Binding Total,StringFormat='Total: {0:N2}'}"
+                    <Label Text="{Binding Total,StringFormat='Total: {0:N2} AKZ'}"
                            FontSize="26"
                            FontAttributes="Bold"></Label>
                     <Button Text="Confirmar venda"
-                            BackgroundColor="DarkGreen"
+                            BackgroundColor="#173F35"
                             FontSize="17"
                             HeightRequest="52"
                             x:Name="ConfirmarVenda"

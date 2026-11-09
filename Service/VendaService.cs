@@ -22,4 +22,26 @@ public class VendaService
         return await resposta.Content.ReadFromJsonAsync<VendaResponse>();
     }
 
+    public async Task<List<VendaResponse>> ObterVendaAsync()
+    {
+        var vendas = await _client.GetFromJsonAsync<List<VendaResponse>>("api/venda");
+        
+        return vendas ?? new List<VendaResponse>();
+    }
+    public async Task<VendaResponse?> ObterVendaIdAsync(Guid id)
+    {
+        try
+        {
+            var detalhe = await _client.GetAsync($"api/venda/{id}");
+            if (!detalhe.IsSuccessStatusCode)
+                return null;
+            return await detalhe.Content.ReadFromJsonAsync<VendaResponse>();
+        }
+        catch (Exception e)
+        {
+            System.Diagnostics.Debug.WriteLine(e.Message);
+            return null;
+        }
+        
+    }
 }

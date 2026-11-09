@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Farmacia.App.Page.RegistrarPage">
+    
+    <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, *"
+          RowSpacing="15"
+          Margin="20,150, 20, 40"
+    >
+              
+        <Image Grid.Row="0"
+               Source="dotnet_bot.png"
+               Aspect="AspectFit"
+               HeightRequest="100"
+               WidthRequest="100"></Image>
+        
+        <Label Grid.Row="1"
+               Text="Registe-se por favor!"
+               FontFamily="Arial"
+               HorizontalOptions="Center">
+        </Label>
+              
+        <VerticalStackLayout Grid.Row="2"
+                             Padding="30">
+                             
+            <Entry Placeholder="Nome"
+            x:Name="TxtNome"
+            ></Entry>
+            
+            <Entry Placeholder="Email"
+                   x:Name="TxtEmail"
+            ></Entry>
+            
+            <Entry Placeholder="Senha"
+                   x:Name="TxtSenha"
+                   IsPassword="True"
+                   ></Entry>
+        </VerticalStackLayout>
+        <Button Grid.Row="3"
+                Text="Registrar"
+                x:Name="Registrar"
+                Clicked="Registrar_OnClicked"
+                FontSize="Medium"
+                BackgroundColor="DarkGreen"
+                ></Button>
+              
+        <HorizontalStackLayout Grid.Row="4"
+                               Spacing="2"
+                               HorizontalOptions="Center"
+                               VerticalOptions="End">
+            <Label Text="Já possui uma conta?"/>
+            <Label Text="Clique para fazer login"
+                   TextColor="DarkGreen">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer />
+                </Label.GestureRecognizers>
+            </Label>
+        </HorizontalStackLayout>
+    </Grid>
+</ContentPage>

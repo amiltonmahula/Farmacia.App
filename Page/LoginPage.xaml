@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Farmacia.App.Page.LoginPage"
-             Title="LoginPage">
+             >
        
        <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, *"
              RowSpacing="15"
@@ -17,24 +17,36 @@
         
               <Label Grid.Row="1"
                      Text="Faça o Login aqui"
-                     FontFamily="Arial"
+                     FontSize="19"
                      HorizontalOptions="Center">
               </Label>
               
                <VerticalStackLayout Grid.Row="2"
                                     Padding="30">
                       <Entry Placeholder="Email"
-                             x:Name="EntEmail"></Entry>
+                             PlaceholderColor="Black"
+                             FontSize="16"
+                             Keyboard="Email"
+                             x:Name="Email"
+                             Text="{Binding Email}"></Entry>
                       
                       <Entry Placeholder="Senha"
+                             PlaceholderColor="Black"
+                             FontSize="16"
                              IsPassword="True"
-                             x:Name="EntPassWord"></Entry>
+                             Text="{Binding Senha}"></Entry>
                </VerticalStackLayout>
            <Button Grid.Row="3"
-                      Text="Login"
+                      Text="Entrar"
+                      Command="{Binding LoginCommand}"
                       FontSize="Medium"
                       BackgroundColor="DarkGreen"
-                      x:Name="BtnLogin"></Button>
+                      ></Button>
+              <ActivityIndicator IsRunning="{Binding EstaCarregango}"
+                                 IsVisible="{Binding EstaCarregando}"></ActivityIndicator>
+              
+              <Label Text="{Binding Mensagem}"
+                     HorizontalOptions="Center"></Label>
               
               <HorizontalStackLayout Grid.Row="4"
                                      Spacing="2"

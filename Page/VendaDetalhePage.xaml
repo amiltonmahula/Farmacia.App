@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Farmacia.App.Page.VendaDetalhePage">
+    <ScrollView>
+        <VerticalStackLayout Padding="20"
+                             Spacing="15">
+            <Label Text="Detalhes da Venda"
+                   FontSize="24"
+                   FontAttributes="Bold">
+            </Label>
+            <Label Text="{Binding Venda.CriadoEm, StringFormat='Data: {0:dd/MM/yyyy HH:mm}'}"></Label>
+            <CollectionView ItemsSource="{Binding Venda.Itens}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="12"
+                               Margin="0,5">
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="{Binding NomeProduto}"
+                                       FontAttributes="Bold"></Label>
+                                <Label Text="{Binding Quantidade,StringFormat='Quantidade: {0}'}"></Label>
+                                <Label Text="{Binding PrecoUnitario, StringFormat='Preço: {0:N2} kz'}"></Label>
+                                <Label Text="{Binding SubTotal, StringFormat='SubTotal: {0:N2} kz'}"></Label>
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Label Text="{Binding Venda.Total, StringFormat='Total: {0:N2} kz'}"></Label>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

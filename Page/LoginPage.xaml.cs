@@ -1,14 +1,25 @@
-﻿namespace Farmacia.App.Page;
+﻿using Farmacia.App.ViewModel;
+
+namespace Farmacia.App.Page;
 
 public partial class LoginPage : ContentPage
 {
-    public LoginPage()
+    private readonly LoginViewModel _loginViewModel;
+    public LoginPage(LoginViewModel loginViewModel)
     {
+        Email.Focus();
+        _loginViewModel = loginViewModel;
         InitializeComponent();
+        BindingContext = _loginViewModel;
     }
 
-    private void Tap_RecuperarSenha_OnTapped(object? sender, TappedEventArgs e)
+    private async void Tap_RecuperarSenha_OnTapped(object? sender, TappedEventArgs e)
     {
-        throw new NotImplementedException();
+        await Shell.Current.GoToAsync("/EsqueciSenhaPage");
+    }
+    
+    private void LimparCaixas()
+    {
+        
     }
 }

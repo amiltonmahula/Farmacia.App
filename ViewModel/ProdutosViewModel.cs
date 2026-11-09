@@ -1,5 +1,5 @@
 ﻿using System.Collections.ObjectModel;
-
+using Farmacia.App.DTO.Request;
 using Farmacia.App.Models;
 using Farmacia.App.Service;
 
@@ -32,11 +32,11 @@ public class ProdutosViewModel : BaseViewModel
         set => SetField(ref _estaCarregando, value);
     }
 
-    private string _mensagemErro;
-    public string MensagemErro
+    private string _mensagem;
+    public string Mensagem
     {
-        get => _mensagemErro ;
-        set => SetField(ref _mensagemErro, value);
+        get => _mensagem ;
+        set => SetField(ref _mensagem, value);
     }
     private void FiltrarProdutos()
     {
@@ -65,7 +65,7 @@ public class ProdutosViewModel : BaseViewModel
         try
         {
             EstaCarregando = true;
-            MensagemErro = string.Empty;
+            Mensagem = string.Empty;
 
             var resultado = await _service.ObterProdutoAsync();
 
@@ -73,16 +73,55 @@ public class ProdutosViewModel : BaseViewModel
             
             FiltrarProdutos();
             
-            if (Produtos.Count == 0)
+            /*if (Produtos.Count == 0)
             {
                 MensagemErro = "API devolveu, mas a interface não pegou";
             }
             else
-                MensagemErro = $"Produtos Carregados{Produtos.Count}";
+                MensagemErro = $"Produtos Carregados{Produtos.Count}";*/
         }
         catch (Exception e)
         {
-            MensagemErro = $"Erro ao carregar produto; {e.Message}";
+            Mensagem = $"Erro ao carregar produto; {e.Message}";
+        }
+        finally
+        {
+            EstaCarregando = false;
+        }
+    }
+
+    public async Task<bool> CriarProduto(string nome, decimal preco, int quantidade, string descricao, string codigo)
+    {
+        try
+        {
+            EstaCarregando = true;
+            Mensagem = string.Empty;
+
+            var requerido = new ProdutoRequest
+            {
+                Nome = nome,
+                Preco = preco,
+                QuantidadeEstoque = quantidade,
+                DataDeValidade = DateTime.UtcNow,
+                Descricao = descricao,
+                CodigoDeBarra = codigo
+            };
+
+            var resultado = await _service.AdicionarProdutoAsync(requerido);
+            
+            if (resultado is null)
+            {
+                Mensagem = "Falha ao cadastrar produto.";
+                return false;
+            }
+
+            Mensagem = "Cadastro realizado com sucesso";
+            return true;
+        }
+        catch (Exception e)
+        {
+            Mensagem = $"Erro ao cadastrar produto {e.Message}";
+            return false;
         }
         finally
         {

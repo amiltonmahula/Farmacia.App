@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Farmacia.App.Page.HistoricoPage"
+             Title="Histórico de venda"
+             BackgroundColor="#F5F6FA">
+    
+   <ScrollView>
+       <VerticalStackLayout Padding="25" Spacing="20">
+           <Label Text="Histórico de Vendas"
+                  FontSize="28"
+                  FontAttributes="Bold"
+                  TextColor="#202B3C"></Label>
+           <Label Text="Consultas de vendas realizadas"
+                  FontSize="14"
+                  TextColor="gray"></Label>
+           <ActivityIndicator IsRunning="{Binding EstaCarregando}"
+                              IsVisible="{Binding EstaCarregando}"
+                              Color="#2563EB"></ActivityIndicator>
+           <Label Text="{Binding Mensagem}"
+                  TextColor="#DC2626"
+                  HorizontalOptions="Center"
+                  HorizontalTextAlignment="Center"></Label>
+           <CollectionView ItemsSource="{Binding Vendas}"
+                           SelectionMode="None">
+                  <CollectionView.EmptyView>
+                         <Label Text="Nenhuma venda registada"
+                                HorizontalOptions="Center"
+                                TextColor="gray"
+                                Margin="10"></Label>
+                  </CollectionView.EmptyView>
+                  <CollectionView.ItemTemplate>
+                         <DataTemplate>
+                              <Frame Padding="15"
+                                     Margin="5">
+                                     <VerticalStackLayout Spacing="8">
+                                            <Label Text="{Binding CriadoEm, 
+                                            StringFormat='Data: {0:dd/MM/yyyy HH:mm}'}"></Label>
+                                            <Label Text="{Binding Total, StringFormat='Total: {0:N2}'}"></Label>
+                                            <Label Text="Ver detalhes..."
+                                                   TextColor="Blue">
+                                                   <Label.GestureRecognizers>
+                                                          <TapGestureRecognizer 
+                                                                 Command="{Binding 
+                                                                 Source={RelativeSource 
+                                                                 AncestorType={x:Type ContentPage}},
+                                                                 Path=BindingContext.AbrirDetalheCommand}"
+                                                                 CommandParameter="{Binding .}">
+                                                          </TapGestureRecognizer>
+                                                   </Label.GestureRecognizers>
+                                            </Label>
+                                     </VerticalStackLayout>
+                              </Frame>
+                         </DataTemplate>
+                  </CollectionView.ItemTemplate>
+           </CollectionView>
+       </VerticalStackLayout>
+   </ScrollView>
+</ContentPage>
